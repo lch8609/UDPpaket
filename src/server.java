@@ -15,9 +15,11 @@ public class server {
 			
 			DatagramPacket packet = new DatagramPacket(buffer, buffer.length);
 			socket.receive(packet);
+			//System.out.println(socket.getRemoteSocketAddress().toString());
 			
 			InetAddress address = packet.getAddress();
-			int portNo = packet.getPort();
+			//int portNo = packet.getPort();
+			//System.out.println("packet length : "+packet.getLength());
 			dp.putData(buffer);
 			dp.printData();
 		}

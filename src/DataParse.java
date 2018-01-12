@@ -1,5 +1,6 @@
 
 public class DataParse {
+	private Endian endian = new Endian();
 	private byte[] buffer;
 	private byte[] header = new byte[42];
 	private byte[][] dataBlock = new byte[12][100];
@@ -8,8 +9,11 @@ public class DataParse {
 	
 	public void putData(byte[] inBuffer) {
 		buffer = inBuffer;
-		DataParsing(buffer);
+		//EndianConverter(buffer);
+		byte[] val = java.nio.ByteBuffer.wrap(buffer).order(java.nio.ByteOrder.BIG_ENDIAN).array();
+		DataParsing(val);
 	}
+	
 
 	private void DataParsing(byte[] inBuffer) {
 		byte[] buff = new byte[1200];
